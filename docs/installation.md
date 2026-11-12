@@ -1,86 +1,26 @@
-# Installation Guide
+# Installation and recovery notes
 
-This guide provides instructions for installing the Vehicle Detection System.
+**The current repository requires source-code repair before it can be launched reliably.** The entry point `vehicle_detection/main.py` contains unresolved Git merge-conflict markers, so the Python interpreter cannot import it as-is.
 
-## Prerequisites
+## Before attempting installation
 
-Before installing the Vehicle Detection System, ensure you have the following prerequisites:
+1. Inspect `vehicle_detection/main.py` and resolve each conflict against the functionality that should be retained.
+2. Search the tracked `.py` files for `<<<<<<<`, `=======` and `>>>>>>>` conflict markers.
+3. Confirm the dependencies used by the chosen entry point and create a virtual environment.
+4. Compile the package and run a small synthetic-image test before attempting real video.
 
-- Python 3.8 or higher
-- pip (Python package installer)
-- Git (optional, for cloning the repository)
-
-## Installation Methods
-
-### Method 1: Install from PyPI (Recommended)
-
-The simplest way to install the Vehicle Detection System is via pip:
+For a **source inspection environment only**, clone the repo and install a chosen set of dependencies. Do not treat this as a verified executable installation:
 
 ```bash
-pip install vehicle-detection
+git clone https://github.com/BalajiKoushik01/licence-plate-detection-and-masking.git
+cd licence-plate-detection-and-masking
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
 ```
 
-This will install the package and all its dependencies.
+The previous installation guide referred to a generic third-party package and an unrelated GitHub placeholder. Those instructions were not applicable to this repository.
 
-### Method 2: Install from Source
+## Privacy and safety
 
-If you want to install the latest development version or contribute to the project, you can install from source:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/vehicle_detection.git
-   cd vehicle_detection
-   ```
-
-2. Install the package in development mode:
-   ```bash
-   pip install -e .
-   ```
-
-## Installing Dependencies Manually
-
-If you prefer to install dependencies manually, you can use the requirements.txt file:
-
-```bash
-pip install -r requirements.txt
-```
-
-The main dependencies are:
-- ultralytics (for YOLOv8)
-- opencv-python
-- numpy
-
-## Verifying Installation
-
-To verify that the installation was successful, run:
-
-```bash
-python -c "import vehicle_detection; print(vehicle_detection.__version__)"
-```
-
-This should print the version number of the installed package.
-
-## Downloading the YOLOv8 Model
-
-The Vehicle Detection System uses the YOLOv8 model for object detection. The model will be downloaded automatically the first time you run the system. However, if you want to download it manually, you can do so from the [Ultralytics website](https://github.com/ultralytics/ultralytics).
-
-## Troubleshooting
-
-If you encounter any issues during installation, please check the following:
-
-1. Ensure you have the correct Python version:
-   ```bash
-   python --version
-   ```
-
-2. Ensure pip is up to date:
-   ```bash
-   pip install --upgrade pip
-   ```
-
-3. If you're having issues with OpenCV, try installing it separately:
-   ```bash
-   pip install opencv-python
-   ```
-
-4. If you're still having issues, please [open an issue](https://github.com/username/vehicle_detection/issues) on GitHub.
+Only process images and vehicle plate information with permission. Detection and masking accuracy must be assessed with representative data; never assume the system masks every plate in an image or video.
