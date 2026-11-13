@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.log
+output/
+outputs/
+vehicle_detection/output/
+.DS_Store
